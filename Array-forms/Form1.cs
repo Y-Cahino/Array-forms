@@ -12,11 +12,22 @@ namespace Array_forms
 {
     public partial class Form1 : Form
     {
-        int []a=new int[10];
+        public string[] a;
+        public int d;
+        // Creazione menù vuoto
+        MainMenu mainMenu1 = new MainMenu();
+        //categorie menù
+        MenuItem menu1 = new MenuItem();
+        MenuItem menu2 = new MenuItem();
+        MenuItem menu3 = new MenuItem();
+        MenuItem menu4 = new MenuItem();
         public Form1()
         {
+            // tutte le inizializzazioni va fatto dentro questa funzione ("Costruttore della classe")
             InitializeComponent();
             CreateMyMainMenu();
+            a= new string[10];
+            d = 0;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -25,13 +36,6 @@ namespace Array_forms
         }
         public void CreateMyMainMenu()
         {
-            // Creazione menù vuoto
-            MainMenu mainMenu1 = new MainMenu();
-            //categorie menù
-            MenuItem menu1 = new MenuItem();
-            MenuItem menu2= new MenuItem();
-            MenuItem menu3 = new MenuItem();
-            MenuItem menu4 = new MenuItem();
 
             menu1.Text = "Inserisci Elemento";
             menu2.Text = "Calcola somma";
@@ -47,6 +51,23 @@ namespace Array_forms
             // Questo definisce quale tra i main è il menù
             Menu = mainMenu1;
         }
-        
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            aggiunta(a, ref d, button1.Text); 
+        }
+
+        //funzioni di servizio
+        private void aggiunta(string[] a, ref int d, string nome)
+        {
+            a[d] = nome;
+            d++;
+        }
+
+
     }
 }
